@@ -105,10 +105,6 @@ while True:
         #data(img)
         print(str(thumb(img)) + ", " + str(index(img)) + ", " + str(middle(img)) + ", " + str(ring(img)) + ", " + str(pinky(img)))
             
-        
-            
-            
-
     cv2.imshow("Image", img)
     cv2.waitKey(1) 
     if cv2.waitKey(1) == ord("q"):
