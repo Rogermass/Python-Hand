@@ -1,8 +1,8 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
 import time
-import threading
 import math
+import serial
 
 def index():
     
@@ -82,7 +82,6 @@ def thumb():
     return int(thumb_angle)
 
 def data():
-    #77, 8, 15, 18, 29
     
     thumbangle = int((thumb() * 60) / 100)
     indexangle = int((index() * 130) / 173)
@@ -91,7 +90,7 @@ def data():
     pinkyangle = int((pinky() * 100) / 135)
     
     arduino_angles = [thumbangle, indexangle, middleangle, ringangle, pinkyangle]    
-    print(arduino_angles)
+    print("$" + str(arduino_angles[0]) + ", " + str(arduino_angles[1]) + ", " + str(arduino_angles[2]) + ", " + str(arduino_angles[3]) + ", " + str(arduino_angles[4]))
     print(str(thumb()) + ", " + str(index()) + ", " + str(middle()) + ", " + str(ring()) + ", " + str(pinky()))
                 
   
