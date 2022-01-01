@@ -85,10 +85,10 @@ def data():
     #77, 8, 15, 18, 29
     
     thumbangle = int((thumb() * 60) / 100)
-    indexangle = int((index() * 130) / 180)
-    middleangle = int((middle() * 100) / 180)
-    ringangle = int((ring() * 130) / 180)
-    pinkyangle = int((pinky() * 100) / 180)
+    indexangle = int((index() * 130) / 173)
+    middleangle = int((middle() * 100) / 170)
+    ringangle = int((ring() * 130) / 161)
+    pinkyangle = int((pinky() * 100) / 135)
     
     arduino_angles = [thumbangle, indexangle, middleangle, ringangle, pinkyangle]    
     print(arduino_angles)
