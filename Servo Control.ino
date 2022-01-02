@@ -19,6 +19,12 @@ void setup() {
   servoring.attach(11);
   servomiddle.attach(9); 
 
+  servothumb.write(0);  
+  servoindex.write(0);  
+  servopinky.write(0);
+  servoring.write(0);
+  servomiddle.write(0);
+
   
 }
 

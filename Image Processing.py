@@ -1,8 +1,11 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
+from cvzone.SerialModule import SerialObject
+
 import time
 import math
-import serial
+#import pyserial
+
 
 def index():
     
@@ -89,15 +92,21 @@ def data():
     ringangle = int((ring() * 130) / 161)
     pinkyangle = int((pinky() * 100) / 135)
     
+    
+    
     arduino_angles = [thumbangle, indexangle, middleangle, ringangle, pinkyangle]    
-    print(str(arduino_angles[0]) + " " + str(arduino_angles[1]) + " " + str(arduino_angles[2]) + " " + str(arduino_angles[3]) + " " + str(arduino_angles[4]))
-    print(str(thumb()) + ", " + str(index()) + ", " + str(middle()) + ", " + str(ring()) + ", " + str(pinky()))
+    #angle_array = "$" + str(arduino_angles[0]) + " " + str(arduino_angles[1]) + " " + str(arduino_angles[2]) + " " + str(arduino_angles[3]) + " " + str(arduino_angles[4])
+    print(arduino_angles)
+    #print(str(thumb()) + ", " + str(index()) + ", " + str(middle()) + ", " + str(ring()) + ", " + str(pinky()))
+    serial.sendData(arduino_angles)
                 
   
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1, detectionCon=0.7)
+serial = SerialObject('COM3', 9600)
 
 start = time.time()
+
 while True:
     success, img = cap.read()
  
@@ -106,11 +115,6 @@ while True:
     if hands:
         hand1 = hands[0]
         lmlist1 = hand1["lmList"]
-        bbox = hand1["bbox"]
-        cp1 = hand1["center"]
-        HandType = hand1["type"]
-        
-    
 
         current_time = time.time()
         if current_time - start >= 0.5:
