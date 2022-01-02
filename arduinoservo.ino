@@ -6,21 +6,9 @@ Servo servomiddle;
 Servo servoring;
 Servo servopinky;
 
-
-char number[50];
 char c;
-int state = 0;
-String myStringRec;
-int stringCounter = 0;
-bool stringCounterStart = false;
-String myRevivedString;
-int stringLength = 6;
 
-int servoPinky,servoMiddle,servoIndex,servoThumb,servoRing;
-int myVals[] ={0,0,0,0,0} ;
-
-int myButton= 1;
-bool portable;
+int thumb, index, middle, ring, pinky; 
 
 void setup() {
 
@@ -37,47 +25,25 @@ void setup() {
 void loop() {
   
 receiveData();
-if (servoPinky ==1){  servopinky.write(100);}else{servopinky.write(0);}
-if (servoIndex ==1){  servoindex.write(130);}else{servoindex.write(0);}
-if (servoMiddle ==1){  servomiddle.write(100);}else{servomiddle.write(0);}
-if (servoThumb ==1){  servothumb.write(60);}else{servothumb.write(0);}
-if (servoRing ==1){  servoring.write(130);}else{servoring.write(0);}
+servothumb.write(thumb); 
+servoindex.write(index); 
+servomiddle.write(middle);
+servoring.write(ring); 
+servopinky.write(pinky); 
 }
 
 
 void receiveData() {
-  int i = 0;
   while (Serial.available()) {
-   char c = Serial.read();
+
+  char c = Serial.read(); 
   
     if (c == '$') {
-      stringCounterStart = true;
-    }
-    if (stringCounterStart == true )
-    {
-      if (stringCounter < stringLength)
-      {
-        myRevivedString = String(myRevivedString + c);
-        stringCounter++;
-      }
-      if (stringCounter >= stringLength) {
-        stringCounter = 0; stringCounterStart = false;
-        servoPinky = myRevivedString.substring(1, 2).toInt();
-        servoRing = myRevivedString.substring(2, 3).toInt();
-        servoMiddle = myRevivedString.substring(3, 4).toInt();
-        servoIndex = myRevivedString.substring(4, 5).toInt();
-        servoThumb = myRevivedString.substring(5, 6).toInt();
-//        Serial.print(servoPinky);
-//        Serial.print(" ");
-//        Serial.print(servoRing);
-//        Serial.print(" ");
-//        Serial.print(servoMiddle);
-//        Serial.print(" ");
-//        Serial.print(servoIndex);
-//        Serial.print(" ");
-//        Serial.println(servoThumb);       
-        myRevivedString = "";
-      }
+      thumb = Serial.parseInt(); 
+      index = Serial.parseInt();
+      middle = Serial.parseInt();
+      ring = Serial.parseInt();
+      pinky = Serial.parseInt();
     }
   }
 }
