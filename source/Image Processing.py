@@ -1,6 +1,6 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
-from cvzone.SerialModule import SerialObject
+import SerialModule
 
 import time
 import math
@@ -98,12 +98,13 @@ def data():
     #angle_array = "$" + str(arduino_angles[0]) + " " + str(arduino_angles[1]) + " " + str(arduino_angles[2]) + " " + str(arduino_angles[3]) + " " + str(arduino_angles[4])
     print(arduino_angles)
     #print(str(thumb()) + ", " + str(index()) + ", " + str(middle()) + ", " + str(ring()) + ", " + str(pinky()))
-    serial.sendData(arduino_angles)
+    print(serial.sendData(arduino_angles))
+    
                 
   
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1, detectionCon=0.7)
-serial = SerialObject('COM3', 9600)
+serial = SerialModule.SerialObject('COM3', 9600)
 
 start = time.time()
 

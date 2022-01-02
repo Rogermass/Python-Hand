@@ -59,7 +59,7 @@ void DataProcessing() {
 
   char c = Serial.read(); 
   
-    if (c == '$') {
+    if (c == '[') {
       thumb = Serial.parseInt(); 
       index = Serial.parseInt();
       middle = Serial.parseInt();
