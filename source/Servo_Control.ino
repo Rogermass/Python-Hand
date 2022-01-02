@@ -57,9 +57,10 @@ servopinky.write(pinky);
 void DataProcessing() {
   while (Serial.available()) {
 
-  char c = Serial.read(); 
+  String serial_input = Serial.read(); 
+  char first_char = serial_input[0]; 
   
-    if (c == '[') {
+    if (first_char == '[') {
       thumb = Serial.parseInt(); 
       index = Serial.parseInt();
       middle = Serial.parseInt();
