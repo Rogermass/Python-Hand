@@ -10,7 +10,7 @@ char c;
 
 int thumb, index, middle, ring, pinky; 
 
-String serial_output; 
+char a; 
 
 void setup() {
 
@@ -34,16 +34,7 @@ void loop() {
   
 DataProcessing();
 
-Serial.print("Angles: ");
-Serial.print(thumb);
-Serial.print(" ");
-Serial.print(index);
-Serial.print(" ");
-Serial.print(middle);
-Serial.print(" ");
-Serial.print(ring);
-Serial.print(" ");
-Serial.print(pinky);
+
 
 
 servothumb.write(thumb); 
@@ -57,9 +48,9 @@ servopinky.write(pinky);
 void DataProcessing() {
   while (Serial.available()) {
 
-  String serial_input = Serial.read(); 
-  
-  char first_char = serial_input[0]; 
+  a = Serial.read(); 
+  Serial.print(a);
+  char first_char = a; 
   
     if (first_char == '[') {
       thumb = Serial.parseInt(); 
@@ -67,6 +58,18 @@ void DataProcessing() {
       middle = Serial.parseInt();
       ring = Serial.parseInt();
       pinky = Serial.parseInt();
+      
+      Serial.print("Angles: ");
+      Serial.print(thumb);
+      Serial.print(" ");
+      Serial.print(index);
+      Serial.print(" ");
+      Serial.print(middle);
+      Serial.print(" ");
+      Serial.print(ring);
+      Serial.print(" ");
+      Serial.print(pinky);
+      Serial.print('\n');
     }
   }
 }
