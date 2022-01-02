@@ -58,6 +58,7 @@ void DataProcessing() {
   while (Serial.available()) {
 
   String serial_input = Serial.read(); 
+  
   char first_char = serial_input[0]; 
   
     if (first_char == '[') {
