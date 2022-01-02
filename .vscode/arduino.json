@@ -2,6 +2,6 @@
     "configuration": "cpu=atmega328old",
     "board": "arduino:avr:nano",
     "programmer": "arduino:avrisp",
-    "sketch": "arduinoservo.ino",
+    "sketch": "Servo Control.ino",
     "port": "/dev/cu.Bluetooth-Incoming-Port"
 }

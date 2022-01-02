@@ -10,6 +10,8 @@ char c;
 
 int thumb, index, middle, ring, pinky; 
 
+String serial_output; 
+
 void setup() {
 
   Serial.begin(9600);
@@ -30,7 +32,20 @@ void setup() {
 
 void loop() {
   
-receiveData();
+DataProcessing();
+
+Serial.print("Angles: ");
+Serial.print(thumb);
+Serial.print(" ");
+Serial.print(index);
+Serial.print(" ");
+Serial.print(middle);
+Serial.print(" ");
+Serial.print(ring);
+Serial.print(" ");
+Serial.print(pinky);
+
+
 servothumb.write(thumb); 
 servoindex.write(index); 
 servomiddle.write(middle);
@@ -39,7 +54,7 @@ servopinky.write(pinky);
 }
 
 
-void receiveData() {
+void DataProcessing() {
   while (Serial.available()) {
 
   char c = Serial.read(); 
