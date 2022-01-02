@@ -34,16 +34,17 @@ void loop() {
   
 DataProcessing();
 
-
-
-
-servothumb.write(thumb); 
-servoindex.write(index); 
-servomiddle.write(middle);
-servoring.write(ring); 
-servopinky.write(pinky); 
+MoveServos();
 }
 
+void MoveServos() {
+
+  servothumb.write(thumb); 
+  servoindex.write(index); 
+  servomiddle.write(middle);
+  servoring.write(ring); 
+  servopinky.write(pinky); 
+}
 
 void DataProcessing() {
   while (Serial.available()) {
@@ -59,7 +60,7 @@ void DataProcessing() {
       ring = Serial.parseInt();
       pinky = Serial.parseInt();
       
-      Serial.print("Angles: ");
+      //Serial.print("Angles: ");
       Serial.print(thumb);
       Serial.print(" ");
       Serial.print(index);
