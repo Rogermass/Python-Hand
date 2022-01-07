@@ -1,10 +1,9 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
 import SerialModule
-
 import time
 import math
-#import pyserial
+
 
 
 def index():
@@ -122,7 +121,7 @@ while True:
             data()
             start = current_time
             
-    cv2.imshow("Hand Processor", img)
+    cv2.imshow("AI Video Hand Processor", img)
     cv2.waitKey(1) 
     if cv2.waitKey(1) == ord("q"):
         break
