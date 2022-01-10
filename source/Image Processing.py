@@ -96,7 +96,7 @@ def data():
     
     arduino_angles = [thumbangle, indexangle, middleangle, ringangle, pinkyangle]    
     #angle_array = "$" + str(arduino_angles[0]) + " " + str(arduino_angles[1]) + " " + str(arduino_angles[2]) + " " + str(arduino_angles[3]) + " " + str(arduino_angles[4])
-    angles = "[" + str(thumb()) + ", " + str(index()) + ", " + str(middle()) + ", " + str(ring()) + ", " + str(pinky())
+    angles = "[" + str(thumb()) + ", " + str(index()) + ", " + str(middle()) + ", " + str(ring()) + ", " + str(pinky()) + "]"
     print(angles)
     serial.sendData(angles)
     
