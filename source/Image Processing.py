@@ -4,8 +4,8 @@ import SerialModule
 import time
 import math
 
-
-
+serial = SerialModule.SerialObject("/dev/cu.usbserial-10", 9600)
+arduino_angles = []
 def index():
     
     lil, info = detector.findDistance(lmlist1[8], lmlist1[5])
@@ -96,15 +96,13 @@ def data():
     
     arduino_angles = [thumbangle, indexangle, middleangle, ringangle, pinkyangle]    
     #angle_array = "$" + str(arduino_angles[0]) + " " + str(arduino_angles[1]) + " " + str(arduino_angles[2]) + " " + str(arduino_angles[3]) + " " + str(arduino_angles[4])
-    print(arduino_angles)
-    #print(str(thumb()) + ", " + str(index()) + ", " + str(middle()) + ", " + str(ring()) + ", " + str(pinky()))
-    serial.sendData(arduino_angles)
+    angles = "[" + str(thumb()) + ", " + str(index()) + ", " + str(middle()) + ", " + str(ring()) + ", " + str(pinky())
+    print(angles)
+    serial.sendData(angles)
     
                 
-  
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1, detectionCon=0.7)
-serial = SerialModule.SerialObject('COM3', 9600)
 
 start = time.time()
 
@@ -118,8 +116,10 @@ while True:
         lmlist1 = hand1["lmList"]
 
         current_time = time.time()
-        if current_time - start >= 0.5:
+        if current_time - start >= 0.1:
             data()
+            
+
             start = current_time
             
     cv2.imshow("AI Video Hand Processor", img)

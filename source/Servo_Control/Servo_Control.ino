@@ -47,7 +47,7 @@ void MoveServos() {
 }
 
 void DataProcessing() {
-  //while (Serial.available()) {
+  while (Serial.available()) {
 
   a = Serial.read(); 
   Serial.print(a);
@@ -73,4 +73,4 @@ void DataProcessing() {
       Serial.print('\n');
     }
   }
-
+}
